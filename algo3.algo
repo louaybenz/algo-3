@@ -1,0 +1,54 @@
+  
+PROCEDURE Dot_Product(V1,V2)
+VAR
+    V1,V2:ARRAY_OF FLOAT[] ;
+    i: INTEGER ;
+    ps: FLOAT =0;
+BEGIN
+    FOR i FROM 0 TO lengthV1-1  DO
+        Read (V1[i]);
+    END_FOR 
+    FOR i FROM 0 TO lengthV2-1  DO
+        Read (V2[i]);
+    END_FOR 
+    FOR i FROM 0 TO lengthV1-1  DO
+        ps = ps + V1[i]*V2[i] ;
+    END_FOR  
+END
+FUNCTION Dot_Product(V1,V2) : FLOAT 
+VAR
+    V1,V2:ARRAY_OF FLOAT[] ;
+    i: INTEGER ;
+    ps: FLOAT =0;
+BEGIN
+    FOR i FROM 0 TO lengthV1-1  DO
+        Read (V1[i]);
+    END_FOR 
+    FOR i FROM 0 TO lengthV2-1  DO
+        Read (V2[i]);
+    END_FOR 
+    FOR i FROM 0 TO lengthV1-1  DO
+        ps = ps + V1[i]*V2[i] ;
+    END_FOR 
+    RETURN ps ; 
+END
+ALGORITHM Orthogonal_Vectors    
+VAR
+    V1,V2 : ARRAY_OF FLOAT[] ; 
+    i , n  : INTEGER ;
+    ps : FLOAT ;
+BEGIN
+    REPEAT
+        Write ("enter the number of vectors");
+        Read (n);
+    UNTIL ( (n >= 2) AND (n%2 =0))
+    FOR i FROM 0 TO n ST0EP 1  DO
+        Read (V1);
+        Read (V2);
+    END_FOR
+        ps := Dot_Product (V1,V2);
+    IF (ps=0) THEN
+        Write ("the vectors are orthogonal");
+    ELSE
+        Write ("the vectors are not orthogonal");
+END
